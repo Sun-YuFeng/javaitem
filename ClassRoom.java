@@ -1,43 +1,54 @@
 import java.util.Random;
 class ClassRoom {
-    private String className;
-    private Group[] groups;
-    private Student[] students;
+    public Student[] students;
+    public Group[] groups;
 
-    public ClassRoom(String className, Group[] groups, Student[] students) {
-        this.className = className;
-        this.groups = groups;
-        this.students = students;
-    }
-
-    public String getClassName() {
-        return className;
-    }
-
-    public Group[] getGroups() {
-        return groups;
-    }
-
-    public Student[] getStudents() {
-        return students;
-    }
-
-    public Group randomGroup() {
-        Random random = new Random();
-        if (groups.length > 0) {
-            int index = random.nextInt(groups.length);
-            return groups[index];
+    public ClassRoom() {
+        students = new Student[100];
+        groups = new Group[50];
+        for (int i = 0; i < 50; i++) {
+            groups[i] = new Group();
         }
-        return null;
     }
 
-    public Student randomStudentFromClass() {
+    public void addStudent(Student student) {
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] == null) {
+                students[i] = student;
+                break;
+            }
+        }
+    }
+
+    public Group getRandomGroup() {
+        Random random = new Random();
+        int index = random.nextInt(50);
+        while (groups[index].getStudent1() == null && groups[index].getStudent2() == null) {
+            index = random.nextInt(50);
+        }
+        return groups[index];
+    }
+
+    public Student getRandomStudent() {
         Random random = new Random();
         if (students.length > 0) {
             int index = random.nextInt(students.length);
+            while (students[index] == null) {
+                index = random.nextInt(students.length);
+            }
             return students[index];
+        } else {
+            return null;
         }
-        return null;
+    }
+
+    // 添加一个方法来遍历 groups
+    public void iterateGroups() {
+        for (Group group : groups) {
+            if (group!= null) {
+                // 可以在这里对每个小组进行操作
+            }
+        }
     }
 }
 

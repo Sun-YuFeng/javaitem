@@ -1,25 +1,41 @@
-class Student {
+import java.util.Random;
+
+public class Student {
     private String name;
-    private String gender;
+    private int age;
+    private int id;
+    public int groupId;
 
-    public Student(String name, String gender) {
-        this.name = name;
-        this.gender = gender;
-    }
-
-    public void setName(String Name){
-        this.name=name;
-    }
     public String getName() {
         return name;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getGender() {
-        return gender;
+    public int getAge() {
+        return age;
     }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
+
 }
-

@@ -1,11 +1,24 @@
+package Members;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Group {
-    public String groupName;
+    private String groupName;
 
-    public int groupId;
+    private int groupId;
 
-    public Student[] students = new Student[3];
+    private int score;
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    ArrayList<Student> students = new ArrayList<>();
 
     public String getGroupName() {
         return groupName;
@@ -21,15 +34,6 @@ public class Group {
 
     public void setGroupId(int groupId) {
         this.groupId = groupId;
-    }
-
-    public void randomCallStudent(){
-        Random random = new Random();
-        int luckyId = random.nextInt(1)+1;
-        String name = students[luckyId].getName();
-        int id = students[luckyId].getId();
-        int groupId = students[luckyId].getGroupId();
-        System.out.println(name+ " " + id+ " " + groupId);
     }
 
 

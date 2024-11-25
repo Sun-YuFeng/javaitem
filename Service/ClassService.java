@@ -1,9 +1,6 @@
 package Service;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 import Uitil.*;
 import Members.*;
@@ -28,6 +25,23 @@ public class ClassService {
             e.printStackTrace();
         }
     }
+
+    public void outScore(){
+        try {
+            File file = new File(Constant.FILE_PATH + Constant.CLASS_PATH + "\\成绩.txt");
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            for (Student student:Constant.students) {
+                String line = student.getName() + ',' + student.getId() + ',' + student.score;
+                bw.write(line);
+                bw.newLine();
+            }
+            bw.flush();
+            bw.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
 
 }

@@ -52,7 +52,7 @@ public class GroupService {
             }
 
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(Constant.FILE_PATH + Constant.CLASS_PATH + "\\小组.txt",true));
-            String bwLine = String.valueOf(number) + ',' + groupName + ',' + String.valueOf(score);
+            String bwLine = String.valueOf(number) + ',' + groupName + ',' + score;
             bufferedWriter.write(bwLine);
             bufferedWriter.newLine();
             bufferedWriter.flush();;

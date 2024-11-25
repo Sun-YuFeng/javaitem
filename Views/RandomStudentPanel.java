@@ -1,4 +1,5 @@
 package Views;
+import Members.Student;
 import Service.GroupService;
 import Service.StudentServince;
 import Uitil.Constant;
@@ -69,9 +70,11 @@ public class RandomStudentPanel extends JPanel {
                 JOptionPane.showMessageDialog(this, "请先随机选择学生", "", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 String currentStudent = txtStudent.getText();
-                String ccurrentGroup = new StudentServince().getGroupName(currentStudent);
-                int groupScore = new GroupService().getGroupScore(ccurrentGroup);
-                new GroupService().changeGroup(ccurrentGroup,ccurrentGroup,groupScore - Constant.ABSENTEEISM_SCORE);
+                for (Student student:Constant.students) {
+                    if(student.getName().equals(currentStudent)){
+                        student.score -= Constant.ABSENTEEISM_SCORE;
+                    }
+                }
                 JOptionPane.showMessageDialog(this, "已记录缺勤", "", JOptionPane.INFORMATION_MESSAGE);
             }
         });
@@ -81,9 +84,11 @@ public class RandomStudentPanel extends JPanel {
                 JOptionPane.showMessageDialog(this, "请先随机选择学生", "", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 String currentStudent = txtStudent.getText();
-                String ccurrentGroup = new StudentServince().getGroupName(currentStudent);
-                int groupScore = new GroupService().getGroupScore(ccurrentGroup);
-                new GroupService().changeGroup(ccurrentGroup,ccurrentGroup,groupScore - Constant.LEAVE_SCORE);
+                for (Student student:Constant.students) {
+                    if(student.getName().equals(currentStudent)){
+                        student.score -= Constant.LEAVE_SCORE;
+                    }
+                }
                 JOptionPane.showMessageDialog(this, "已记录请假", "", JOptionPane.INFORMATION_MESSAGE);
             }
         });
@@ -93,9 +98,11 @@ public class RandomStudentPanel extends JPanel {
                 JOptionPane.showMessageDialog(this, "请先随机选择学生", "", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 String currentStudent = txtStudent.getText();
-                String ccurrentGroup = new StudentServince().getGroupName(currentStudent);
-                int groupScore = new GroupService().getGroupScore(ccurrentGroup);
-                new GroupService().changeGroup(ccurrentGroup,ccurrentGroup,groupScore + Constant.ANSWER_QUESTION);
+                for (Student student:Constant.students) {
+                    if(student.getName().equals(currentStudent)){
+                        student.score += Constant.ANSWER_QUESTION;
+                    }
+                }
                 JOptionPane.showMessageDialog(this, "回答正确", "", JOptionPane.INFORMATION_MESSAGE);
             }
         });

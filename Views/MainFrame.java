@@ -1,5 +1,6 @@
 package Views;
 
+import Service.ClassService;
 import Uitil.*;
 import javax.swing.*;
 import java.awt.*;
@@ -71,6 +72,7 @@ public class MainFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "请先选择班级", "", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 // TODO 导出
+                new ClassService().outScore();
                 JOptionPane.showMessageDialog(this, "成绩已导出", "", JOptionPane.INFORMATION_MESSAGE);
             }
         });

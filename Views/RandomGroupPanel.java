@@ -1,4 +1,5 @@
 package Views;
+import Members.Student;
 import Service.GroupService;
 import Uitil.Constant;
 
@@ -119,7 +120,12 @@ public class RandomGroupPanel extends JPanel {
             if (txtStudent.getText() == null || txtStudent.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "请先随机选择学生", "", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                new GroupService().changeGroup(txtGroup.getText(),txtGroup.getText(),Integer.parseInt(txtScore.getText()) - Constant.ABSENTEEISM_SCORE);
+                String currentStudent = txtStudent.getText();
+                for (Student student:Constant.students) {
+                    if(student.getName().equals(currentStudent)){
+                        student.score -= Constant.ABSENTEEISM_SCORE;
+                    }
+                }
                 JOptionPane.showMessageDialog(this, "已记录缺勤", "", JOptionPane.INFORMATION_MESSAGE);
             }
         });
@@ -128,7 +134,12 @@ public class RandomGroupPanel extends JPanel {
             if (txtStudent.getText() == null || txtStudent.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "请先随机选择学生", "", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                new GroupService().changeGroup(txtGroup.getText(),txtGroup.getText(),Integer.parseInt(txtScore.getText()) - Constant.LEAVE_SCORE);
+                String currentStudent = txtStudent.getText();
+                for (Student student:Constant.students) {
+                    if(student.getName().equals(currentStudent)){
+                        student.score -= Constant.LEAVE_SCORE;
+                    }
+                }
                 JOptionPane.showMessageDialog(this, "已记录请假", "", JOptionPane.INFORMATION_MESSAGE);
             }
         });
